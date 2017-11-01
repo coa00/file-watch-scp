@@ -6,7 +6,7 @@ fileupload
 
 動作例
 
-``
+```
 node fileuplod.js -s dist -d /opt/viewer_celsys/htdocs/api/bsr4b/hybrid/webpacktest
 ```
 
