@@ -4,6 +4,8 @@
  * 使用例
  *
  * chokidar "dist/**" -c "node fileuplod.js -s dist -d /opt/viewer_celsys/htdocs/api/bsr4b/hybrid/webpacktest"
+ *
+ *
  */
 
 var client = require("scp2");
@@ -20,7 +22,6 @@ var source = argv.s;
 
 //アップロード先
 var dest = argv.d;
-
 
 
 var fileUplod = ()=>{
