@@ -1,6 +1,13 @@
+/**
+ * 開発サーバにファイルをscpするスクリプト
+ *
+ * 使用例
+ *
+ * chokidar "dist/**" -c "node fileuplod.js -s dist -d /opt/viewer_celsys/htdocs/api/bsr4b/hybrid/webpacktest"
+ */
+
 var client = require("scp2");
 var fs = require("fs");
-var chokidar = require("chokidar");
 var argv = require('minimist')(process.argv.slice(2));
 
 // ssh key
@@ -14,8 +21,7 @@ var source = argv.s;
 //アップロード先
 var dest = argv.d;
 
-// 使用例
-// chokidar "dist/**" -c "node fileuplod.js -s dist -d /opt/viewer_celsys/htdocs/api/bsr4b/hybrid/webpacktest"
+
 
 var fileUplod = ()=>{
     client.scp(source, {
@@ -35,7 +41,7 @@ var fileUplod = ()=>{
 if (source && dest){
     fileUplod();
 }else {
-    console.log("-s ソースディレクトリ　-d アップロードディレクトリ (-host ホスト -key キー)");
+    console.log("-s ソースファイル(ディレクトリ)　-d アップロードファイル(ディレクトリ) (-host ホスト -key キー)");
 }
 
 
