@@ -20,7 +20,7 @@ const dist = process.env.SCP_DIST;
 // ユーザ
 const user = process.env.SCP_USER;
 
-const fileUpload = () => {
+const uploadFile = () => {
     client.scp(source, {
         host: host,
         username: user,
@@ -36,7 +36,7 @@ const fileUpload = () => {
 };
 
 if (source && dist && key && host && user) {
-    fileUpload();
+    uploadFile();
 } else {
     console.log(".env ファイルが存在しないか、設定項目が不足しています。");
 }
@@ -47,7 +47,7 @@ chokidar.watch(source, {
     persistent: true,
 }).on("all", (event, path) => {
     console.log(event, path);
-    fileUpload();
+    uploadFile();
 }).on("ready", () => {
     console.log("Ready");
 });
