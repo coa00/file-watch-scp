@@ -1,33 +1,59 @@
-fileupload
+DevSync
 ===============
 
-アップロード元とアップロード先を指定するとファイルをscpします。
+アップロード元とアップロード先を指定するとアップロード元を監視して変更があるとアップロードします。
+
+#### これどこか便利
+
+* ファイルを変更するたびにアップロードしてくれる
+* 導入が簡単。node さえ入ってればOK（なはず）
 
 
-動作例
-
-```
-node fileuplod.js -s dist -d /opt/viewer_celsys/htdocs/api/bsr4b/hybrid/webpacktest
-```
-
-
-chokidarと組み合わせるとファイル監視してアップロードできるようになります。
+## インストール方法
 
 ```
-chokidar "dist/**" -c "node fileuplod.js -s dist -d /opt/viewer_celsys/htdocs/api/bsr4b/hybrid/webpacktest"
+npm install 
+```
 
+or
+
+```
+yarn install 
 ```
 
 
-引数
+
+## 実行方法
 
 ```
--d アップロード元ファイルを指定
--s アップロード先のファイル指定
--h アップロードホスト
--key ssh のキー
+node file-sync.js
 ```
 
-WIP
 
-ユーザ名の指定など。
+## 設定
+
+.envを実行ディレクトリに作成します。
+
+
+```
+# ソース元
+SCP_SRC="dist"
+
+# アップロード先
+SCP_DIST="/opt/viewer_celsys/htdocs/users/kaoki/hybrid/webpacktest/"
+
+# アップロードするホスト
+SCP_HOST="bast.bs.hqdomain.celsys.co.jp"
+
+# サーバユーザ名
+SCP_USER="develop"
+
+# sshのキー
+SCP_KEY="bsdev.ppk"
+
+```
+
+## WIP
+
+* 特になし
+
