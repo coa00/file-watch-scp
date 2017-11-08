@@ -12,13 +12,13 @@ DevSync
 ## インストール方法
 
 ```
-npm install http://devxserve/gitbucket/git/aoki.kohei/fileupload.git
+npm install
 ```
 
 or
 
 ```
-yarn add -D http://devxserve/gitbucket/git/aoki.kohei/fileupload.git
+yarn install
 ```
 
 
