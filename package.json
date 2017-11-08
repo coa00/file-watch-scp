@@ -16,6 +16,7 @@
     "scp2": "^0.5.0"
   },
   "devDependencies": {
+    "chokidar": "^1.7.0",
     "dotenv": "^4.0.0",
     "minimist": "^1.2.0"
   }
