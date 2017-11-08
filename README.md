@@ -3,7 +3,7 @@ DevSync
 
 アップロード元とアップロード先を指定するとアップロード元を監視して変更があるとアップロードします。
 
-#### これどこか便利
+#### これのどこが便利
 
 * ファイルを変更するたびにアップロードしてくれる
 * 導入が簡単。node さえ入ってればOK（なはず）
@@ -12,13 +12,13 @@ DevSync
 ## インストール方法
 
 ```
-npm install 
+npm install http://devxserve/gitbucket/git/aoki.kohei/fileupload.git
 ```
 
 or
 
 ```
-yarn install 
+yarn add -D http://devxserve/gitbucket/git/aoki.kohei/fileupload.git
 ```
 
 
@@ -35,7 +35,7 @@ node file-sync.js
 .envを実行ディレクトリに作成します。
 
 
-```
+```ini
 # ソース元
 SCP_SRC="dist"
 
@@ -50,7 +50,6 @@ SCP_USER="develop"
 
 # sshのキー
 SCP_KEY="bsdev.ppk"
-
 ```
 
 ## WIP
