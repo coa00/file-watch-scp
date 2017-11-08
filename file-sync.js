@@ -1,33 +1,33 @@
 require("dotenv").config();
 
-var client = require("scp2");
-var fs = require("fs");
-var chokidar = require("chokidar");
+const client = require("scp2");
+const fs = require("fs");
+const chokidar = require("chokidar");
 
 
-// プラベートキー
-var key = process.env.SCP_KEY;
+// プライベートキー
+const key = process.env.SCP_KEY;
 
-//　ホスト
-var host = process.env.SCP_HOST;
+// ホスト
+const host = process.env.SCP_HOST;
 
-//ソース
-var source = process.env.SCP_SRC;
+// ソース
+const source = process.env.SCP_SRC;
 
-//アップロード先
-var dist = process.env.SCP_DIST;
+// アップロード先
+const dist = process.env.SCP_DIST;
 
-//ユーザ
-var user = process.env.SCP_USER
+// ユーザ
+const user = process.env.SCP_USER;
 
-var fileUplod = ()=>{
+const uploadFile = () => {
     client.scp(source, {
         host: host,
         username: user,
         privateKey: fs.readFileSync(key),
-        path: dist
-    }, (err) => {
-        if(err) {
+        path: dist,
+    }, err => {
+        if (err) {
             console.error("アップロードに失敗しました。", err);
             return;
         }
@@ -35,19 +35,19 @@ var fileUplod = ()=>{
 });
 };
 
-if (source && dist && key && host && user){
-    fileUplod();
-}else {
+if (source && dist && key && host && user) {
+    uploadFile();
+} else {
     console.log(".env ファイルが存在しないか、設定項目が不足しています。");
 }
 
 
-var watcher = chokidar.watch(source,{
+chokidar.watch(source, {
     ignored: /node_modules|\.git/,
-    persistent:true
+    persistent: true,
 }).on("all", (event, path) => {
     console.log(event, path);
-fileUplod();
+    uploadFile();
 }).on("ready", () => {
     console.log("Ready");
 });
