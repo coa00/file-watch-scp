@@ -4,6 +4,10 @@ const client = require("scp2");
 const fs = require("fs");
 const chokidar = require("chokidar");
 
+var log = require('loglevel-message-prefix')(require('loglevel'), {
+    separator: '/'
+});
+
 
 // プライベートキー
 const key = process.env.SCP_KEY;
@@ -28,17 +32,17 @@ const uploadFile = () => {
         path: dist,
     }, err => {
         if (err) {
-            console.error("アップロードに失敗しました。", err);
+            log.error("アップロードに失敗しました。", err);
             return;
         }
-        console.log("アップロード完了");
+        log.notice("アップロード完了");
 });
 };
 
 if (source && dist && key && host && user) {
     uploadFile();
 } else {
-    console.log(".env が存在しないか、設定項目が不足しています。");
+    log.error(".env が存在しないか、設定項目が不足しています。");
 }
 
 
@@ -46,8 +50,8 @@ chokidar.watch(source, {
     ignored: /node_modules|\.git/,
     persistent: true,
 }).on("all", (event, path) => {
-    console.log(event, path);
+    log.notice(event, path);
     uploadFile();
 }).on("ready", () => {
-    console.log("Ready");
+    log.debug("Ready");
 });
