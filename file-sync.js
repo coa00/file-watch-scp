@@ -7,7 +7,10 @@ const chokidar = require("chokidar");
 var log = require('loglevel-message-prefix')(require('loglevel'), {
     prefixes: ['level','timestamp'],
     staticPrefixes: ['fileSync'],
-    separator: '/'
+    separator: '/',
+    timestamp:{
+        timezone:'Asia/Tokyo'
+    }
 });
 
 log.setLevel('info');
