@@ -1,4 +1,5 @@
 require("dotenv").config();
+require('date-utils');
 
 const client = require("scp2");
 const fs = require("fs");
@@ -8,8 +9,14 @@ var log = require('loglevel-message-prefix')(require('loglevel'), {
     prefixes: ['level','timestamp'],
     staticPrefixes: ['fileSync'],
     separator: '/',
-    timestamp:{
-        timezone:'Asia/Tokyo'
+    options: {
+        /**
+         * Available options: locale (string), timezone (string), hour12 (boolean)
+         */
+        timestamp: {
+            timeZone:'Asia/Tokyo',
+            'hour12': false
+        }
     }
 });
 
