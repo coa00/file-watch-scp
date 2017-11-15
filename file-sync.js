@@ -5,19 +5,24 @@ const client = require("scp2");
 const fs = require("fs");
 const chokidar = require("chokidar");
 
+const getTime = ()=>{
+    return formatted = new Date().toFormat("YYYYMMDDHH24MISS");
+}
+
 var log = require('loglevel-message-prefix')(require('loglevel'), {
-    prefixes: ['level','timestamp'],
+    // FIXME: timestamp のタイムゾーンの変更ができない。
+    // prefixes: ['level','timestamp'],
+    // options: {
+    //     timestamp: {
+    //         timeZone:'Asia/Tokyo',
+    //         'hour12': false
+    //     }
+    // }
+    prefixes: ['level'],
     staticPrefixes: ['fileSync'],
     separator: '/',
-    options: {
-        /**
-         * Available options: locale (string), timezone (string), hour12 (boolean)
-         */
-        timestamp: {
-            timeZone:'Asia/Tokyo',
-            'hour12': false
-        }
-    }
+
+
 });
 
 log.setLevel('info');
@@ -45,11 +50,11 @@ const uploadFile = () => {
         path: dist,
     }, err => {
         if (err) {
-            log.error("アップロードに失敗しました。", err);
+            log.error(getTime(), "アップロードに失敗しました。", err);
             return;
         }
-        log.info("アップロード完了");
-});
+        log.info(getTime(), "アップロード完了");
+    });
 };
 
 if (source && dist && key && host && user) {
