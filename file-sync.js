@@ -38,7 +38,7 @@ const uploadFile = () => {
             log.error("アップロードに失敗しました。", err);
             return;
         }
-        log.notice("アップロード完了");
+        log.info("アップロード完了");
 });
 };
 
@@ -53,7 +53,7 @@ chokidar.watch(source, {
     ignored: /node_modules|\.git/,
     persistent: true,
 }).on("all", (event, path) => {
-    log.notice(event, path);
+    log.info(event, path);
     uploadFile();
 }).on("ready", () => {
     log.debug("Ready");
