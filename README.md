@@ -12,23 +12,24 @@ DevSync
 ## インストール方法
 
 ```
-npm install
+npm install git+ssh://git@devxserve:29418/aoki.kohei/fileupload.git --save-dev  
 ```
-
-or
-
-```
-yarn install
-```
-
 
 
 ## 実行方法
 
 ```
-node file-sync.js
+./node_modules/fileupload/bin/file-sync.js
 ```
 
+npm scriptに記載すると便利です。
+
+```
+  "scripts": {
+    "dev-sync": "./node_modules/fileupload/bin/file-sync.js",
+  },
+
+```
 
 ## 設定
 
