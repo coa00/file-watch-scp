@@ -5,9 +5,12 @@ const fs = require("fs");
 const chokidar = require("chokidar");
 
 var log = require('loglevel-message-prefix')(require('loglevel'), {
+    prefixes: ['level','timestamp'],
+    staticPrefixes: ['fileSync'],
     separator: '/'
 });
 
+log.setLevel('info');
 
 // プライベートキー
 const key = process.env.SCP_KEY;
