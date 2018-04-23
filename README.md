@@ -1,4 +1,4 @@
-DevSync
+file-watch-scp
 ===============
 
 アップロード元とアップロード先を指定するとアップロード元を監視して変更があるとアップロードします。
@@ -12,21 +12,21 @@ DevSync
 ## インストール方法
 
 ```
-npm install git+ssh://git@devxserve:29418/aoki.kohei/fileupload.git --save-dev  
+npm install file-watch-scp --save-dev  
 ```
 
 
 ## 実行方法
 
 ```
-./node_modules/fileupload/bin/file-sync.js
+./node_modules/fileupload/bin/file-watch-scp.js
 ```
 
 npm scriptに記載すると便利です。
 
 ```
   "scripts": {
-    "dev-sync": "./node_modules/fileupload/bin/file-sync.js",
+    "dev-sync": "./node_modules/fileupload/bin/file-watch-scp.js",
   },
 
 ```
@@ -37,23 +37,19 @@ npm scriptに記載すると便利です。
 
 
 ```ini
-# ソース元
+# src dir
 SCP_SRC="dist"
 
-# アップロード先
+# upload dir
 SCP_DIST="/opt/viewer_celsys/htdocs/users/kaoki/hybrid/webpacktest/"
 
-# アップロードするホスト
+# upload host
 SCP_HOST="bast.bs.hqdomain.celsys.co.jp"
 
-# サーバユーザ名
+# ssh user name
 SCP_USER="develop"
 
-# sshのキー
+# ssh private key
 SCP_KEY="bsdev.ppk"
 ```
-
-## WIP
-
-* 特になし
 

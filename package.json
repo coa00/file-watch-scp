@@ -1,14 +1,14 @@
 {
-  "name": "fileupload",
+  "name": "file-watch-scp",
   "version": "0.0.1",
-  "description": "scp でファイルをアップロードする",
-  "main": "uploadfile.js",
+  "description": "file watch and scp",
+  "main": "file-watch-scp.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@devxserve:29418/aoki.kohei/fileupload.git"
+    "url": "ssh://git@github.com:coa00/file-watch-scp.git"
   },
   "author": {
     "name": "kohei aoki",

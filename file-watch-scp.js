@@ -7,22 +7,12 @@ const chokidar = require("chokidar");
 
 const getTime = ()=>{
     return formatted = new Date().toFormat("YYYYMMDDHH24MISS");
-}
+};
 
 var log = require('loglevel-message-prefix')(require('loglevel'), {
-    // FIXME: timestamp のタイムゾーンの変更ができない。
-    // prefixes: ['level','timestamp'],
-    // options: {
-    //     timestamp: {
-    //         timeZone:'Asia/Tokyo',
-    //         'hour12': false
-    //     }
-    // }
     prefixes: ['level'],
     staticPrefixes: ['fileSync'],
     separator: '/',
-
-
 });
 
 log.setLevel('info');
@@ -50,17 +40,17 @@ const uploadFile = () => {
         path: dist,
     }, err => {
         if (err) {
-            log.error(getTime(), "アップロードに失敗しました。", err);
+            log.error(getTime(), "upload error", err);
             return;
         }
-        log.info(getTime(), "アップロード完了");
+        log.info(getTime(), "upload complete");
     });
 };
 
 if (source && dist && key && host && user) {
     uploadFile();
 } else {
-    log.error(".env が存在しないか、設定項目が不足しています。");
+    log.error("not found .env file");
 }
 
 
