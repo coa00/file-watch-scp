@@ -41,10 +41,9 @@ npm scriptに記載すると便利です。
 SCP_SRC="dist"
 
 # upload dir
-SCP_DIST="/opt/viewer_celsys/htdocs/users/kaoki/hybrid/webpacktest/"
-
+SCP_DIST="/"
 # upload host
-SCP_HOST="bast.bs.hqdomain.celsys.co.jp"
+SCP_HOST=""
 
 # ssh user name
 SCP_USER="develop"
